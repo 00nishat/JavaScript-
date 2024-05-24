@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>DOM Project</title>
+    <style>
+
+      body{
+        font-family: Arial ;
+       }
+
+      .subscribe-button{
+      border:none ;
+      background-color: black;
+      color: white;
+      padding-top: 10px;
+      padding-bottom:10px ;
+      padding-left: 12px;
+      padding-right: 12px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-bottom:30px ;
+      }
+
+      .is-subscribed{
+         background-color: rgb(240,240,240 );
+         color: black;
+       }
+      
+
+    </style>
+  </head>
+  <body>
+    <p> Youtube Subscribe Button</p>
+    <button onclick="
+      Subscribe()
+      "class="js-subscribe-button subscribe-button">Subscribe</button>
+      <p>Amazon Shipping Calculator</p>
+      <p>Orders under $40 = +$10 shipping.</p>
+      <p>Orders over $40 = Free shipping.</p>
+
+      <input placeholder="Cost of order" class="js-cost-input" onkeydown="
+       handleCostkeydown(event)
+      ">
+      <button onclick="
+      calculateTotal();
+      ">Calculate</button>
+      <p class="js-total-cost"></p>
+
+     
+    <script>
+        function handleCostkeydown(event){
+          if (event.key==='Enter'){
+        calculateTotal();
+          }
+        }
+        function calculateTotal(){
+         const inputElement = document.querySelector('.js-cost-input');
+         let cost=Number(inputElement.value);
+         if(cost < 40){
+          cost = cost +10;
+         } 
+         console.log(cost)
+          document.querySelector('.js-total-cost').innerHTML =`$${cost}`;
+        }
+        
+
+        function Subscribe(){
+          const buttonElement=document.querySelector('.js-subscribe-button');
+
+        if (buttonElement.innerText==='Subscribe'){
+            buttonElement.innerHTML = 'Subscribed';
+            buttonElement.classList.add('is-subscribed');
+       } else {
+            buttonElement.innerHTML='Subscribe';
+            buttonElement.classList.remove('is-subscribed');
+       } 
+
+        }
+ 
+    </script>
+
+  </body>
+</html>
+
+
